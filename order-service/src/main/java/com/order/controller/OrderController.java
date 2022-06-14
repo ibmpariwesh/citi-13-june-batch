@@ -27,7 +27,7 @@ public class OrderController {
 		System.out.println(order.getItem());
 	}
 	@GetMapping
-	public List<OrderVO> getOrders() {
+	public List<OrderVO> getOrders(String name) {
 		return service.getOrders();
 	}
 }
