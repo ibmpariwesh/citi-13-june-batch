@@ -9,14 +9,14 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 @SpringBootApplication
 public class OrderServiceApplication {
-	@Bean
-	@LoadBalanced
-	public RestTemplate restTemplate() {
-		return  new RestTemplate();
-	}
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(OrderServiceApplication.class, args);
 	}
 
+	@Bean
+	@LoadBalanced //Ribbon Load balancer
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 }

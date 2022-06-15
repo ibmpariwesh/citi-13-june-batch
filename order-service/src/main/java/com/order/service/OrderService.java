@@ -13,17 +13,17 @@ import com.order.OrderVO;
 @Service       //Bean
 public class OrderService {
 	@Autowired
-	OrderRepositroy orderRepositroy;
-	@Autowired
 	RestTemplate template;
+	@Autowired
+	OrderRepositroy orderRepositroy;
 	public void saveOrder(OrderVO order) {
-		ResponseEntity<String> response = template.getForEntity("http://EMAIL/email", String.class);
-		System.out.println(response.getBody());
 		orderRepositroy.save(order);
+		ResponseEntity<String> response = template.getForEntity("http://EMAIL-SERVICE/email",
+				String.class);
+		System.out.println(response.getBody());
 		System.out.println("in service");
 	}
-	public List<OrderVO> getOrders() {//will not work with json
-		
+	public List<OrderVO> getOrders() {
 		return orderRepositroy.findAll();
 	}
 }
